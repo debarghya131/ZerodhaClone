@@ -28,7 +28,7 @@ function HeroLink({ item, className }) {
 function Hero() {
     return (
         <section
-            className="py-5"
+            className="py-5 support-hero"
             style={{ backgroundColor: "#387ed1", color: "#fff" }}
         >
             <div className="container">
@@ -56,7 +56,7 @@ function Hero() {
                             style={{ minHeight: "60px" }}
                         />
 
-                        <div className="d-flex flex-wrap gap-4 mt-4">
+                        <div className="d-flex flex-wrap gap-4 mt-4 support-hero__links">
                             {quickLinks.map((item) => (
                                 <HeroLink
                                     key={item.label}

@@ -96,7 +96,7 @@ function Footer() {
                         <img
                             src="/Assets/logo.svg"
                             alt="Zerodha"
-                            style={{ width: "160px" }}
+                            style={{ width: "130px", height: "auto" }}
                             className="mb-4"
                         />
 
@@ -155,7 +155,7 @@ function Footer() {
                     </div>
 
                     {footerColumns.map((column) => (
-                        <div className="col-6 col-lg-2" key={column.title}>
+                        <div className="col-6 col-lg-2 footer-link-column" key={column.title}>
                             <h2 className="fs-3 mb-4" style={{ fontSize: "1.25rem" }}>
                                 {column.title}
                             </h2>

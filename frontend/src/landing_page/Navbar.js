@@ -12,7 +12,7 @@ function Navbar() {
                     <img
                         src="/Assets/logo.svg"
                         alt="Zerodha"
-                        style={{ width: "130px" }}
+                        style={{ width: "130px", height: "auto" }}
                     />
                 </Link>
 

@@ -10,6 +10,7 @@ import {
 const Menu = () => {
   const [selectedMenu, setSelectedMenu] = useState(0);
   const [userName, setUserName] = useState("USERID");
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -32,11 +33,16 @@ const Menu = () => {
 
   const handleMenuClick = (index) => {
     setSelectedMenu(index);
+    setIsMobileMenuOpen(false);
   };
 
   const handleLogout = () => {
     clearDashboardAuth();
     window.location.assign(getFrontendLoginUrl());
+  };
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen((current) => !current);
   };
 
   const menuClass = "menu";
@@ -45,8 +51,19 @@ const Menu = () => {
 
   return (
     <div className="menu-container">
-      <img src="/logo.png" alt="Zerodha" style={{ width: "50px" }} />
-      <div className="menus">
+      <img src="/Assets/logo.svg" alt="Zerodha" className="logo" />
+      <button
+        type="button"
+        className={`dashboard-menu-toggle${isMobileMenuOpen ? " is-open" : ""}`}
+        onClick={toggleMobileMenu}
+        aria-label="Toggle dashboard navigation"
+        aria-expanded={isMobileMenuOpen}
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div className={`menus${isMobileMenuOpen ? " menus--open" : ""}`}>
         <ul>
           <li>
             <Link

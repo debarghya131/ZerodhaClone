@@ -5,5 +5,23 @@ import { Doughnut } from "react-chartjs-2";
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 export function DoughnutChart({ data }) {
-  return <Doughnut data={data} />;
+  return (
+    <div className="doughnut-chart-wrap">
+      <Doughnut
+        data={data}
+        options={{
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: "top",
+              labels: {
+                boxWidth: 34,
+                padding: 12,
+              },
+            },
+          },
+        }}
+      />
+    </div>
+  );
 }
