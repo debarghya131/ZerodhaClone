@@ -2,13 +2,13 @@ import React from "react";
 
 function Awards() {
     return (
-        <section className="container py-5">
+        <section className="container py-5 home-awards">
             <div className="row align-items-center">
                 <div className="col-12 col-lg-6 mb-5 mb-lg-0 text-center">
                     <img
                         src="/Assets/largestBroker.svg"
                         alt="Largest stock broker in India"
-                        className="img-fluid"
+                        className="img-fluid home-awards__illustration"
                         style={{ width: "100%", maxWidth: "430px" }}
                     />
                 </div>
@@ -45,7 +45,7 @@ function Awards() {
                     <img
                         src="/Assets/pressLogos.png"
                         alt="Featured in major press outlets"
-                        className="img-fluid mt-4"
+                        className="img-fluid mt-4 home-awards__press"
                         style={{ width: "100%", maxWidth: "420px", opacity: 0.85 }}
                     />
                 </div>

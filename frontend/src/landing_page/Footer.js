@@ -107,7 +107,7 @@ function Footer() {
                             All rights reserved.
                         </p>
 
-                        <div className="d-flex gap-4 mb-3" style={{ fontSize: "1.45rem" }}>
+                        <div className="d-flex gap-4 mb-3 footer-social" style={{ fontSize: "1.45rem" }}>
                             <span className="text-muted" aria-label="X">
                                 <i className="fa fa-twitter" aria-hidden="true"></i>
                             </span>
@@ -124,7 +124,7 @@ function Footer() {
 
                         <hr className="my-3" style={{ maxWidth: "250px", opacity: 0.15 }} />
 
-                        <div className="d-flex gap-4 mb-4" style={{ fontSize: "1.45rem" }}>
+                        <div className="d-flex gap-4 mb-4 footer-social" style={{ fontSize: "1.45rem" }}>
                             <span className="text-muted" aria-label="YouTube">
                                 <i className="fa fa-youtube-play" aria-hidden="true"></i>
                             </span>
@@ -136,7 +136,7 @@ function Footer() {
                             </span>
                         </div>
 
-                        <div className="d-flex flex-wrap gap-2">
+                        <div className="d-flex flex-wrap gap-2 footer-store-badges">
                             <span aria-label="Get it on Google Play">
                                 <img
                                     src="/Assets/googlePlayBadge.svg"
@@ -154,23 +154,27 @@ function Footer() {
                         </div>
                     </div>
 
-                    {footerColumns.map((column) => (
-                        <div className="col-6 col-lg-2 footer-link-column" key={column.title}>
-                            <h2 className="fs-3 mb-4" style={{ fontSize: "1.25rem" }}>
-                                {column.title}
-                            </h2>
-                            <div className="d-flex flex-column gap-3">
-                                {column.links.map((item) => (
-                                    <FooterItem
-                                        key={item.label}
-                                        item={item}
-                                        className="text-muted text-decoration-none"
-                                        style={{ fontSize: "0.95rem" }}
-                                    />
-                                ))}
-                            </div>
+                    <div className="col-12 col-lg-9">
+                        <div className="row g-4 footer-links-grid">
+                            {footerColumns.map((column) => (
+                                <div className="col-6 col-md-3 footer-link-column" key={column.title}>
+                                    <h2 className="fs-3 mb-4" style={{ fontSize: "1.25rem" }}>
+                                        {column.title}
+                                    </h2>
+                                    <div className="d-flex flex-column gap-3">
+                                        {column.links.map((item) => (
+                                            <FooterItem
+                                                key={item.label}
+                                                item={item}
+                                                className="text-muted text-decoration-none"
+                                                style={{ fontSize: "0.95rem" }}
+                                            />
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
                         </div>
-                    ))}
+                    </div>
                 </div>
 
                 <div className="mt-5 pt-4">
@@ -260,7 +264,7 @@ function Footer() {
                     </p>
                 </div>
 
-                <div className="d-flex flex-wrap justify-content-center gap-4 pt-2">
+                <div className="d-flex flex-wrap justify-content-center gap-4 pt-2 footer-bottom-links">
                     {bottomLinks.map((item) => (
                         <FooterItem
                             key={item.label}

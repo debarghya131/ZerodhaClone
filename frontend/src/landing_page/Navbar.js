@@ -1,14 +1,32 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+
+const navItems = [
+  { label: "Login", to: "/login" },
+  { label: "Signup", to: "/signup" },
+  { label: "About", to: "/about" },
+  { label: "Products", to: "/products" },
+  { label: "Pricing", to: "/pricing" },
+  { label: "Support", to: "/support" },
+];
 
 function Navbar() {
+  const navigate = useNavigate();
+
+  const handleNavClick = (event, to) => {
+    event.preventDefault();
+    navigate(to, {
+      state: { scrollToTop: Date.now() },
+    });
+  };
+
   return (
         <nav
-            className="navbar navbar-expand-lg bg-white border-bottom sticky-top"
+            className="navbar navbar-expand-lg bg-white border-bottom sticky-top site-navbar"
             style={{ zIndex: 1000 }}
         >
             <div className="container py-2">
-                <Link className="navbar-brand" to="/">
+                <Link className="navbar-brand" to="/" onClick={(event) => handleNavClick(event, "/")}>
                     <img
                         src="/Assets/logo.svg"
                         alt="Zerodha"
@@ -30,36 +48,17 @@ function Navbar() {
 
                 <div className="collapse navbar-collapse" id="mainNavbar">
                     <ul className="navbar-nav ms-auto align-items-lg-center gap-lg-4">
-                        <li className="nav-item">
-                            <NavLink className="nav-link text-muted" to="/login">
-                                Login
-                            </NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink className="nav-link text-muted" to="/signup">
-                                Signup
-                            </NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink className="nav-link text-muted" to="/about">
-                                About
-                            </NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink className="nav-link text-muted" to="/products">
-                                Products
-                            </NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink className="nav-link text-muted" to="/pricing">
-                                Pricing
-                            </NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink className="nav-link text-muted" to="/support">
-                                Support
-                            </NavLink>
-                        </li>
+                        {navItems.map((item) => (
+                            <li className="nav-item" key={item.to}>
+                                <NavLink
+                                    className="nav-link text-muted"
+                                    to={item.to}
+                                    onClick={(event) => handleNavClick(event, item.to)}
+                                >
+                                    {item.label}
+                                </NavLink>
+                            </li>
+                        ))}
                     </ul>
                 </div>
             </div>

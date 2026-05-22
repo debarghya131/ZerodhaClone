@@ -46,12 +46,12 @@ const universeProducts = [
 
 function Universe() {
     return (
-        <section className="container py-5">
+        <section className="container py-5 product-universe">
             <div className="row justify-content-center text-center mb-5">
-                <div className="col-12 col-lg-8">
+                <div className="col-12 col-lg-8 product-universe__intro">
                     <h1 className="fs-2 mb-3">The Zerodha Universe</h1>
                     <p
-                        className="text-muted"
+                        className="text-muted product-universe__description"
                         style={{ fontSize: "1rem", lineHeight: 1.8 }}
                     >
                         Extend your trading and investment experience with our
@@ -61,18 +61,18 @@ function Universe() {
                 </div>
             </div>
 
-            <div className="row g-5">
+            <div className="row g-5 product-universe__grid">
                 {universeProducts.map((product) => (
-                    <div className="col-6 col-md-4 col-lg-3" key={product.name}>
-                        <div className="text-center h-100">
+                    <div className="col-6 col-md-4 col-lg-3 product-universe__item-col" key={product.name}>
+                        <div className="text-center h-100 product-universe__item">
                             <img
                                 src={product.image}
                                 alt={product.name}
-                                className="img-fluid mb-3"
+                                className="img-fluid mb-3 product-universe__logo"
                                 style={{ height: "52px", objectFit: "contain" }}
                             />
                             <p
-                                className="text-muted mb-0 mx-auto"
+                                className="text-muted mb-0 mx-auto product-universe__copy"
                                 style={{ fontSize: "0.9rem", maxWidth: "240px" }}
                             >
                                 {product.description}

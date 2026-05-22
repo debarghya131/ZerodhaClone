@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 function Stats() {
     return (
-        <div className="container py-5">
+        <section className="container py-5 home-stats">
             <div className="row align-items-start">
-                <div className="col-12 col-lg-5 px-lg-5 mb-5 mb-lg-0 pt-5">
+                <div className="col-12 col-lg-5 px-lg-5 mb-5 mb-lg-0 pt-lg-5 home-stats__copy">
                     <h1 className="fs-2 mb-5">Trust with confidence</h1>
 
                     <div className="mb-5">
@@ -67,10 +67,10 @@ function Stats() {
                     <img
                         src="/Assets/ecosystem.png"
                         alt="Zerodha ecosystem"
-                        className="img-fluid"
+                        className="img-fluid home-stats__image"
                         style={{ width: "90%", maxWidth: "700px" }}
                     />
-                    <div className="d-flex justify-content-center gap-5 mt-4 flex-wrap">
+                    <div className="d-flex justify-content-center gap-5 mt-4 flex-wrap home-stats__actions">
                         <Link
                             to="/products"
                             style={{ textDecoration: "none", fontSize: "1rem" }}
@@ -92,12 +92,12 @@ function Stats() {
                     <img
                         src="/Assets/pressLogos.png"
                         alt="Press logos"
-                        className="img-fluid"
+                        className="img-fluid home-stats__press"
                         style={{ width: "100%", maxWidth: "700px", opacity: 0.7 }}
                     />
                 </div>
             </div>
-        </div>
+        </section>
     );
 }
 

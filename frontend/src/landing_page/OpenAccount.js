@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function OpenAccount() {
     return (
-        <section className="container py-5">
+        <section className="container py-5 home-open-account">
             <div className="row justify-content-center text-center">
                 <div className="col-12 col-lg-8">
                     <h1 className="fs-2 mb-4">Open a Zerodha account</h1>

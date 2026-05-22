@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import "./index.css";
 import HomePage from "./landing_page/home/HomePage";
 import PricingPage from "./landing_page/pricing/PricingPage";
@@ -13,11 +13,22 @@ import NotFound from "./landing_page/NotFound";
 import { AuthProvider } from "./auth/AuthContext";
 import DashboardHome from "./dashboard/components/Home";
 
+function ScrollToTop() {
+  const { pathname, key } = useLocation();
+
+  React.useLayoutEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, [pathname, key]);
+
+  return null;
+}
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <AuthProvider>
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<Login />} />

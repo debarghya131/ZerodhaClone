@@ -3,18 +3,18 @@ import { Link } from "react-router-dom";
 
 function Hero() {
     return (
-        <section className="container py-5">
+        <section className="container py-5 product-hero">
             <div className="row justify-content-center text-center border-bottom pb-5">
-                <div className="col-12 col-lg-8">
+                <div className="col-12 col-lg-8 product-hero__content">
                     <h1 className="fs-1 mb-3">Zerodha Products</h1>
                     <p
-                        className="text-muted mb-4"
+                        className="text-muted mb-4 product-hero__description"
                         style={{ fontSize: "1.15rem", lineHeight: 1.7 }}
                     >
                         Sleek, modern, and intuitive trading platforms built for
                         investing, trading, and tracking your entire portfolio.
                     </p>
-                    <p className="mb-0" style={{ fontSize: "1rem" }}>
+                    <p className="mb-0 product-hero__actions" style={{ fontSize: "1rem" }}>
                         <Link
                             to="/products"
                             className="text-decoration-none me-4"
