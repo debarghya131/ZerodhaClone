@@ -22,7 +22,7 @@ function getAllowedOrigins() {
     return configuredOrigins;
   }
 
-  return ["http://localhost:3000", "http://localhost:3001"];
+  return ["http://localhost:3000"];
 }
 
 const allowedOrigins = getAllowedOrigins();

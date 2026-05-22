@@ -1,35 +1,45 @@
 import axios from "axios";
 
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || "http://localhost:5000";
-const FRONTEND_URL = process.env.REACT_APP_FRONTEND_URL || "http://localhost:3000";
-const DASHBOARD_TOKEN_KEY = "dashboardToken";
-const DASHBOARD_USER_NAME_KEY = "dashboardUserName";
+import { API_BASE_URL } from "../api/config";
+
+const AUTH_TOKEN_KEY = "token";
+const AUTH_USER_KEY = "user";
 
 function getStoredDashboardToken() {
-  return localStorage.getItem(DASHBOARD_TOKEN_KEY) || "";
+  return localStorage.getItem(AUTH_TOKEN_KEY) || "";
 }
 
 function getStoredDashboardUserName() {
-  return localStorage.getItem(DASHBOARD_USER_NAME_KEY) || "";
+  const storedUser = localStorage.getItem(AUTH_USER_KEY);
+
+  if (!storedUser) {
+    return "";
+  }
+
+  try {
+    return JSON.parse(storedUser)?.name || "";
+  } catch (error) {
+    return "";
+  }
 }
 
 function storeDashboardAuth({ token, name }) {
   if (token) {
-    localStorage.setItem(DASHBOARD_TOKEN_KEY, token);
+    localStorage.setItem(AUTH_TOKEN_KEY, token);
   }
 
   if (name) {
-    localStorage.setItem(DASHBOARD_USER_NAME_KEY, name);
+    localStorage.setItem(AUTH_USER_KEY, JSON.stringify({ name }));
   }
 }
 
 function clearDashboardAuth() {
-  localStorage.removeItem(DASHBOARD_TOKEN_KEY);
-  localStorage.removeItem(DASHBOARD_USER_NAME_KEY);
+  localStorage.removeItem(AUTH_TOKEN_KEY);
+  localStorage.removeItem(AUTH_USER_KEY);
 }
 
 function getFrontendLoginUrl() {
-  return `${FRONTEND_URL}/login?logout=1`;
+  return "/login?logout=1";
 }
 
 const apiClient = axios.create({
@@ -61,7 +71,6 @@ apiClient.interceptors.response.use(
 
 export default API_BASE_URL;
 export {
-  FRONTEND_URL,
   apiClient,
   clearDashboardAuth,
   getFrontendLoginUrl,

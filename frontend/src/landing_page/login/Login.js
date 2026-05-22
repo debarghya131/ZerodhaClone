@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
 import { loginUser } from "../../api/auth";
-import { buildDashboardUrl } from "../../api/config";
 import { useAuth } from "../../auth/AuthContext";
 
 const initialForm = {
@@ -16,6 +15,7 @@ function Login() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
   const { login, logout } = useAuth();
 
   useEffect(() => {
@@ -23,9 +23,9 @@ function Login() {
 
     if (queryParams.get("logout") === "1") {
       logout();
-      window.history.replaceState({}, "", location.pathname);
+      navigate(location.pathname, { replace: true });
     }
-  }, [location.pathname, location.search, logout]);
+  }, [location.pathname, location.search, logout, navigate]);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -49,7 +49,7 @@ function Login() {
     try {
       const response = await loginUser(formData);
       login(response);
-      window.location.assign(buildDashboardUrl(response));
+      navigate("/dashboard");
     } catch (requestError) {
       setError(requestError.message || "Login failed. Please try again.");
     } finally {
@@ -75,7 +75,7 @@ function Login() {
                   <div className="auth-card__highlights">
                     <div>
                       <strong>Live flow</strong>
-                      <span>Redirects into the separate dashboard app</span>
+                      <span>Opens the trading dashboard inside this app</span>
                     </div>
                     <div>
                       <strong>Secure login</strong>
