@@ -433,6 +433,51 @@ img {
   max-width: 100%;
 }
 
+.about-team__friend-card {
+  margin-top: 1.75rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(66, 66, 66, 0.12);
+}
+
+.about-team__friend-title {
+  margin-bottom: 0.45rem;
+  color: #424242;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.about-team__friend-copy {
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+.about-team__friend-links {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+}
+
+.about-team__friend-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 2.6rem;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 50%;
+  color: #387ed1;
+  background-color: rgba(56, 126, 209, 0.08);
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.about-team__friend-icon:hover {
+  color: #fff;
+  background-color: #387ed1;
+  transform: translateY(-1px);
+}
+
 .footer-social {
   flex-wrap: wrap;
 }
@@ -1552,6 +1597,15 @@ img {
   .about-team__lead-copy-text {
     font-size: 0.9rem !important;
     line-height: 1.8 !important;
+  }
+
+  .about-team__friend-card {
+    margin-top: 1.4rem;
+    padding-top: 1.25rem;
+  }
+
+  .about-team__friend-links {
+    justify-content: flex-start;
   }
 
   .about-team__member-col {

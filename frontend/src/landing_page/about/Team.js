@@ -1,35 +1,69 @@
 import React from "react";
+import EmailIcon from "@mui/icons-material/Email";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import LanguageIcon from "@mui/icons-material/Language";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import XIcon from "@mui/icons-material/X";
 
 const teamMembers = [
     {
         name: "Nikhil Kamath",
         role: "Co-founder & CFO",
-        image: "/Assets/co-founder.png",
+        image: "/Assets/co-founder.webp",
     },
     {
         name: "Kailash Nadh",
         role: "CTO",
-        image: "/Assets/CTO.png",
+        image: "/Assets/CTO.webp",
     },
     {
         name: "Venu Madhav",
         role: "COO",
-        image: "/Assets/COO.png",
+        image: "/Assets/COO.webp",
     },
     {
         name: "Hanan Delvi",
         role: "Chief of Education",
-        image: "/Assets/Chief_of_Education.png",
+        image: "/Assets/Chief_of_Education.webp",
     },
     {
         name: "Seema Patil",
         role: "Director",
-        image: "/Assets/Director.png",
+        image: "/Assets/Director.webp",
     },
     {
         name: "Karthik Rangappa",
         role: "Chief of Strategy",
-        image: "/Assets/Director_Strategy.png",
+        image: "/Assets/Director_Strategy.webp",
+    },
+];
+
+const friendLinks = [
+    {
+        label: "LinkedIn Profile",
+        href: "https://www.linkedin.com/in/debarghya-bandyopadhyay-953b02400?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+        icon: LinkedInIcon,
+    },
+    {
+        label: "X",
+        href: "https://x.com/debarghya131",
+        icon: XIcon,
+    },
+    {
+        label: "GitHub",
+        href: "https://github.com/debarghya131",
+        icon: GitHubIcon,
+    },
+    {
+        label: "Portfolio",
+        href: "https://portfolio.debarghya.org",
+        icon: LanguageIcon,
+    },
+    {
+        label: "Email",
+        href: "mailto:debarghyabandyopadhyay191@gmail.com",
+        displayText: "debarghyabandyopadhyay191@gmail.com",
+        icon: EmailIcon,
     },
 ];
 
@@ -45,9 +79,13 @@ function Team() {
             <div className="row align-items-center mb-5 pb-4">
                 <div className="col-12 col-lg-5 text-center mb-4 mb-lg-0">
                     <img
-                        src="/Assets/FounderCEO.png"
+                        src="/Assets/FounderCEO.webp"
                         alt="Nithin Kamath"
                         className="img-fluid rounded-circle mb-4 about-team__lead-image"
+                        width="290"
+                        height="290"
+                        loading="lazy"
+                        decoding="async"
                         style={{
                             width: "290px",
                             height: "290px",
@@ -73,6 +111,35 @@ function Team() {
                         Playing basketball is his zen. He also loves fitness and
                         reading.
                     </p>
+
+                    <div className="about-team__friend-card">
+                        <h3 className="about-team__friend-title">Be My Friend</h3>
+                        <p className="text-muted about-team__friend-copy">
+                            I always like to make new friends. Follow me on
+                        </p>
+                        <div className="about-team__friend-links">
+                            {friendLinks.map((link) => {
+                                const Icon = link.icon;
+                                const isEmailLink = link.href.startsWith("mailto:");
+                                const linkTarget = isEmailLink ? undefined : "_blank";
+                                const linkRel = isEmailLink ? undefined : "noreferrer";
+
+                                return (
+                                    <a
+                                        href={link.href}
+                                        className="about-team__friend-icon"
+                                        target={linkTarget}
+                                        rel={linkRel}
+                                        aria-label={link.label}
+                                        title={link.label}
+                                        key={link.label}
+                                    >
+                                        <Icon fontSize="small" />
+                                    </a>
+                                );
+                            })}
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -84,6 +151,10 @@ function Team() {
                                 src={member.image}
                                 alt={member.name}
                                 className="img-fluid rounded-circle mb-3 about-team__member-image"
+                                width="180"
+                                height="180"
+                                loading="lazy"
+                                decoding="async"
                                 style={{
                                     width: "180px",
                                     height: "180px",
